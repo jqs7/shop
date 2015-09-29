@@ -56,7 +56,7 @@ public class ShopFrame extends JFrame {
 						ItemInfo[] ii = (ItemInfo[]) bia.getBeliefbase().getBeliefSet("catalog").getFacts();
 						// 链接数据库
 						Jedis jedis = new Jedis("localhost");
-						jedis.auth("xxxx");
+						// jedis.auth("*****");
 						String s = JSON.toJSONString(ii);
 						// 信念集信息转为JSON后存储到数据库
 						jedis.set("shopdata:" + shopName, s);

@@ -86,7 +86,7 @@ public class ShopPanel extends JPanel {
 				IBDIInternalAccess bia = (IBDIInternalAccess) ia;
 				// 连接数据库
 				Jedis jedis = new Jedis("localhost");
-				jedis.auth("xxxx");
+				// jedis.auth("*****");
 				String s = jedis.get("shopdata:" + shopName);
 				List<ItemInfo> obj = null;
 				if (s != null) {
