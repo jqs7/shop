@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	<H3>Shop scenario application descriptor</H3>
+	
+	In this scenario a typical online shopping scenario
+	is build up. Customer agents may search for shops
+	and buy offered goods in that shops.
+	
+	The shop application demonstrates how active components (in this
+	application specifically bdi agents) can be equipped with a domain
+	interface. This allows an object oriented interaction with the
+	component that exposes the domain interface. 
+-->
+<applicationtype xmlns="http://jadex.sourceforge.net/jadex"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://jadex.sourceforge.net/jadex 
+	                    http://jadex.sourceforge.net/jadex-application-2.4.xsd"
+	name="Shopping" package="jadex.bdi.jqs7.shop"
+	autoshutdown="true">
+	
+	<imports>
+		<import>jadex.bridge.service.clock.IClockService</import>
+		<import>jadex.bridge.service.SServiceProvider</import>
+		<import>jadex.commons.future.*</import>
+	</imports>
+	
+	<componenttypes>
+		<componenttype name="Shop" filename="jadex/bdi/jqs7/shop/Shop.agent.xml"/>
+		<componenttype name="Customer" filename="jadex/bdi/jqs7/shop/Customer.agent.xml"/>
+		<componenttype name="ShopAndCustomer" filename="jadex/bdi/jqs7/shop/ShopAndCustomer.agent.xml"/>
+	</componenttypes>
+	
+	<configurations>
+		<configuration name="2 Shops / 1 Customer">
+			<components>
+				<component type="Shop">
+					<arguments>
+						<argument name="shopname">"Ladl"</argument>
+						<argument name="catalog">
+						</argument>
+					</arguments>
+				</component>
+				<component type="Shop">
+					<arguments>
+						<argument name="shopname">"Herzie"</argument>
+						<argument name="catalog">
+						</argument>
+					</arguments>
+				</component>
+  				<component type="Customer"/>
+			</components>
+ 		</configuration>
+	
+		<configuration name="1 Shop / 1 Customer">
+			<components>
+				<component type="Shop">
+					<arguments>
+						<argument name="shopname">"Ladl"</argument>
+						<argument name="catalog">
+						</argument>
+					</arguments>
+				</component>
+  				<component type="Customer"/>
+			</components>
+ 		</configuration>
+ 		
+ 		<configuration name="1 Shop">
+			<components>
+				<component type="Shop">
+					<arguments>
+						<argument name="shopname">"Pri"</argument>
+						<argument name="catalog">
+						</argument>
+					</arguments>
+				</component>
+			</components>
+ 		</configuration>
+ 		
+ 		<configuration name="1 Customer">
+  				<component type="Customer"/>
+  		</configuration>	
+  		
+ 		<configuration name="2 Shops that are also Customers">
+			<components>
+				<component type="ShopAndCustomer" name="Ladl">
+					<arguments>
+						<argument name="shopname">"Ladl"</argument>
+						<argument name="catalog">
+						</argument>
+					</arguments>
+				</component>
+				<component type="ShopAndCustomer" name="Herzie">
+					<arguments>
+						<argument name="shopname">"Herzie"</argument>
+						<argument name="catalog">
+						</argument>
+					</arguments>
+				</component>
+			</components>
+ 		</configuration>
+	</configurations>
+</applicationtype>
